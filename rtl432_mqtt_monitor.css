@@ -1,0 +1,91 @@
+/* mqtt_monitor.css */
+
+Screen {
+    /* Dock layout for major sections */
+    layout: vertical;
+}
+
+Header {
+    dock: top;
+    height: auto; /* Or 1 if you prefer compact */
+    background: $primary; /* Use primary color (often blueish) */
+    color: $text; /* Ensure text is visible */
+    /* Text style bold for header title? Default might be bold already */
+}
+
+Footer {
+    dock: bottom;
+    height: auto; /* Footer height adapts to content (bindings) */
+}
+
+#status-bar {
+    dock: bottom;
+    height: auto; /* Allow height to adjust for error + help text lines */
+    min-height: 2; /* Ensure at least 2 lines are usually visible */
+    background: $surface-darken-1;
+    color: $text-muted;
+    padding: 0 1;
+    border-top: thick $accent-lighten-2;
+}
+
+/* Main content area */
+#app-grid {
+    /* Takes remaining space between Header and status-bar */
+    layout: horizontal; /* Panes side-by-side */
+    padding: 1; /* Padding around the panes */
+    grid-gutter: 1 2; /* Space between panes */
+}
+
+/* Panel styling using Containers */
+#devices-panel {
+    width: 35%; /* Adjust width */
+    padding-right: 1;
+    /* Panel border and title */
+    border: round $accent; /* Cyan-like color */
+    border-title-align: center;
+    /* border-title: "Devices"; Title set dynamically now */
+}
+
+#events-panel {
+    width: 1fr; /* Remaining width */
+    /* Panel border and title */
+    border: round $success; /* Green color */
+    border-title-align: center;
+    /* border-title: "Events"; Title set dynamically now */
+}
+
+/* Ensure widgets inside panels fill the space */
+#devices-panel > DataTable {
+    height: 100%;
+}
+
+/* If using VerticalScroll around RichLog */
+#events-panel > VerticalScroll {
+    height: 100%;
+}
+#events-panel > VerticalScroll > RichLog {
+    /* RichLog takes full height of its scrolling container */
+    height: 100%;
+}
+/* If RichLog is directly inside #events-panel */
+/*
+#events-panel > RichLog {
+    height: 100%;
+}
+*/
+
+/* DataTable styling (cursor/highlight same as before) */
+#devices-table > .datatable--highlight {
+    background: $accent-darken-2;
+}
+#devices-table > .datatable--cursor {
+    background: $accent;
+    color: $text;
+}
+
+/* Optional: Add padding within panels if needed */
+/*
+#devices-panel, #events-panel {
+    padding: 1;
+}
+*/
